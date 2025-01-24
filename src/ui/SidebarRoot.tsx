@@ -111,7 +111,6 @@ export default function SidebarRoot(props: SidebarProps): React.JSX.Element {
     function ToggleBitBurnerSidebarButton() {
         const activeIconSelector = `${DashboardSearchPrefixKey} ul:not(#${ID}) .MuiCollapse-root :not(.custom-button) .${Svg.MaterialClass.replaceAll(" ", ".")}:not([data-testid="ChevronLeftIcon"])`
         const elemIcon = doc.querySelector(activeIconSelector);
-        console.log(elemIcon)
         if (elemIcon) {
             if (DashboardActiveInd()) {
                 elemIcon.classList.add("colorSecondary");
@@ -123,7 +122,6 @@ export default function SidebarRoot(props: SidebarProps): React.JSX.Element {
 
         const activeButtonSelector = `${DashboardSearchPrefixKey} .${GetComponentClassName(AccordionItem.MaterialClass, DashboardSearchPrefixKey, AccordionItem.MaterialActiveClassSuffix).trim().replaceAll(" ", ".")}:not(custom-button)`
         const elem = doc.querySelector(activeButtonSelector);
-        console.log(elem)
         if (elem) {
             if (DashboardActiveInd()) {
                 elem.classList.add("inactive");
@@ -135,7 +133,6 @@ export default function SidebarRoot(props: SidebarProps): React.JSX.Element {
 
         const activeTextSelector = `${DashboardSearchPrefixKey} .MuiCollapse-root .${GetComponentClassName(AccordionItem.MaterialClass, DashboardSearchPrefixKey, AccordionItem.MaterialActiveClassSuffix).trim().replaceAll(" ", ".")}:not(custom-button) .${Paragraph.MaterialClass.replaceAll(" ", ".")}`
         const elemText = doc.querySelector(activeTextSelector);
-        console.log(elemText)
         if (elemText) {
             if (DashboardActiveInd()) {
                 elemText.classList.add("colorSecondary");
@@ -195,16 +192,12 @@ export function AttachSidebarRoot(ns: NS): MutationObserver {
     }
     const callback = (mutationList: MutationRecord[], observer: MutationObserver) => {
         const BB_ATTACH_NODE_CLASSNAME = `${BB_SIDEBAR_WRAPPER_CLASS} ${GetComponentClassName(BB_SIDEBAR_WRAPPER_CLASS)}`
-        console.log("callback")
         for (const mutation of mutationList) {
             if (mutation.type === "childList") {
                 if (mutation.addedNodes) {
                     mutation.addedNodes.forEach((node) => {
                         const htmlNode = node as HTMLElement | null
-                        console.log(htmlNode)
-                        console.log(BB_ATTACH_NODE_CLASSNAME)
                         if(htmlNode && htmlNode.className == BB_ATTACH_NODE_CLASSNAME) {
-                            console.log("Attach")
                             AttachSidebar()
                         }
                     })
@@ -222,7 +215,6 @@ export function AttachSidebarRoot(ns: NS): MutationObserver {
     };
 
     const targetNode = doc.querySelector(BB_ROOT_SELECTOR);
-    console.log(targetNode);
 
     const config = { attributes: false, childList: true, subtree: false, characterData: false };
 
