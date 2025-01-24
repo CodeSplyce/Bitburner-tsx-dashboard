@@ -35,6 +35,7 @@ export function SetReactComponentClassName(key: string, value: string) {
     if (!doc.ComponentClassList)
         doc.ComponentClassList = {};
 
-    doc.ComponentClassList[key] = value;
+    if (!!value && value !== "")
+        doc.ComponentClassList[key] = value;
 }
 //new Set([...document.querySelectorAll("#root .MuiDrawer-root :not(style):not(path):not(script)")].map(node => node.tagName.toLowerCase() == 'svg' || node.tagName.toLowerCase() == 'path' ? node.className.baseVal : node.className).sort())

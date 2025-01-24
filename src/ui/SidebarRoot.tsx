@@ -121,18 +121,6 @@ export default function SidebarRoot(props: SidebarProps): React.JSX.Element {
             }
         }
 
-        const activeTextSelector = `${DashboardSearchPrefixKey} .MuiCollapse-root .${GetComponentClassName(AccordionItem.MaterialClass, DashboardSearchPrefixKey, AccordionItem.MaterialActiveClassSuffix).trim().replaceAll(" ", ".")}:not(custom-button) .${Paragraph.MaterialClass.replaceAll(" ", ".")}`
-        const elemText = doc.querySelector(activeTextSelector);
-        console.log(elemText)
-        if (elemText) {
-            if (DashboardActiveInd()) {
-                elemText.classList.add("colorSecondary");
-            }
-            else {
-                elemText.classList.remove("colorSecondary");
-            }
-        }
-
         const activeButtonSelector = `${DashboardSearchPrefixKey} .${GetComponentClassName(AccordionItem.MaterialClass, DashboardSearchPrefixKey, AccordionItem.MaterialActiveClassSuffix).trim().replaceAll(" ", ".")}:not(custom-button)`
         const elem = doc.querySelector(activeButtonSelector);
         console.log(elem)
@@ -142,6 +130,18 @@ export default function SidebarRoot(props: SidebarProps): React.JSX.Element {
             }
             else {
                 elem.classList.remove("inactive");
+            }
+        }
+
+        const activeTextSelector = `${DashboardSearchPrefixKey} .MuiCollapse-root .${GetComponentClassName(AccordionItem.MaterialClass, DashboardSearchPrefixKey, AccordionItem.MaterialActiveClassSuffix).trim().replaceAll(" ", ".")}:not(custom-button) .${Paragraph.MaterialClass.replaceAll(" ", ".")}`
+        const elemText = doc.querySelector(activeTextSelector);
+        console.log(elemText)
+        if (elemText) {
+            if (DashboardActiveInd()) {
+                elemText.classList.add("colorSecondary");
+            }
+            else {
+                elemText.classList.remove("colorSecondary");
             }
         }
     }
@@ -193,14 +193,18 @@ export function AttachSidebarRoot(ns: NS): MutationObserver {
             RenderSidebarRoot(ns)
         }
     }
-    const BB_ATTACH_NODE_CLASSNAME = `${BB_SIDEBAR_WRAPPER_CLASS} ${GetComponentClassName(BB_SIDEBAR_WRAPPER_CLASS)}`
     const callback = (mutationList: MutationRecord[], observer: MutationObserver) => {
+        const BB_ATTACH_NODE_CLASSNAME = `${BB_SIDEBAR_WRAPPER_CLASS} ${GetComponentClassName(BB_SIDEBAR_WRAPPER_CLASS)}`
+        console.log("callback")
         for (const mutation of mutationList) {
             if (mutation.type === "childList") {
                 if (mutation.addedNodes) {
                     mutation.addedNodes.forEach((node) => {
                         const htmlNode = node as HTMLElement | null
+                        console.log(htmlNode)
+                        console.log(BB_ATTACH_NODE_CLASSNAME)
                         if(htmlNode && htmlNode.className == BB_ATTACH_NODE_CLASSNAME) {
+                            console.log("Attach")
                             AttachSidebar()
                         }
                     })
@@ -218,6 +222,7 @@ export function AttachSidebarRoot(ns: NS): MutationObserver {
     };
 
     const targetNode = doc.querySelector(BB_ROOT_SELECTOR);
+    console.log(targetNode);
 
     const config = { attributes: false, childList: true, subtree: false, characterData: false };
 
@@ -231,7 +236,6 @@ export function AttachSidebarRoot(ns: NS): MutationObserver {
     const elem: HTMLElement | null = doc.querySelector(BB_SIDEBAR_ROOT_SELECTOR);
     if (elem) {
         AttachSidebar()
-        RenderSidebarRoot(ns)
     }
 
     return observer
