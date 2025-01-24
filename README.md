@@ -1,3 +1,17 @@
+## Creating a new page
+In the SidebarRoot.tsx
+* Create a new entry in the StateList
+* Create a new entry in the CreateAccordionItems function
+* Create your own React page YourPage.tsx
+
+In the BoxRoot.tsx
+* Import YourPage.tsx
+* Create a new entry in the components dictionary that maps your StatList entry to your React component
+
+## Import your own Svg Icons
+In the Svg.tsx
+* Create a new entry in the Svg constants. You can find some free ones on [Google Fonts](https://fonts.google.com/icons)
+
 ## Extension Recommendations
 [vscode-bitburner-connector](https://github.com/bitburner-official/bitburner-vscode) ([vscode extension marketplace](https://marketplace.visualstudio.com/items?itemName=bitburner.bitburner-vscode-integration)) to upload your files into the game
 

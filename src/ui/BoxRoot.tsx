@@ -1,6 +1,5 @@
 import Dashboard from "/ui/Dashboard";
 import CommandCenter from "/ui/CommandCenter";
-import Divider from "/ui/material/Divider";
 import {GetComponentClassName} from "/ui/UIHelper";
 
 const MaterialClass = "MuiBox-root"
