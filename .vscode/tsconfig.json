@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./src",
+        "rootDir": "./src",
+        "sourceRoot": "./src",
+        "module": "CommonJS",
+        "target": "ES6",
+        "lib": [ "es2015" ],
+        "allowJs": true,
+        "typeRoots": ["./@types"],
+    },
+}

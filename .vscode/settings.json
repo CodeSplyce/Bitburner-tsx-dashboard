@@ -1,0 +1,29 @@
+{
+    // Linter Settings
+    "typescript.validate.enable": true,
+    "javascript.validate.enable": false,
+    "eslint.validate": ["typescript", "typescriptreact"],
+    "eslint.workingDirectories": ["./src"],
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+
+    // Use Non-relative imports so the game can find files in its fake directory structure
+    "javascript.preferences.importModuleSpecifier": "non-relative",
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+
+    // Autosave Settings
+    "files.autoSave": "off",
+
+    // Autosnippet settings
+    "autoSnippet.snippets": [
+        {
+            "pattern": "**/*.ts", 
+            "snippet": "ns-template"
+        }
+    ],
+    
+    "javascript.suggest.completeJSDocs": true,
+    "javascript.format.placeOpenBraceOnNewLineForControlBlocks": true,
+    "javascript.format.placeOpenBraceOnNewLineForFunctions": true
+}
