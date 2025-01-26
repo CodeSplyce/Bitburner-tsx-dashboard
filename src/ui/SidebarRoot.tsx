@@ -120,7 +120,7 @@ export default function SidebarRoot(props: SidebarProps): React.JSX.Element {
             }
         }
 
-        const activeButtonSelector = `${DashboardSearchPrefixKey} .${GetComponentClassName(AccordionItem.MaterialClass, DashboardSearchPrefixKey, AccordionItem.MaterialActiveClassSuffix).trim().replaceAll(" ", ".")}:not(custom-button)`
+        const activeButtonSelector = `${DashboardSearchPrefixKey} .${GetComponentClassName(AccordionItem.MaterialClass, DashboardSearchPrefixKey, AccordionItem.MaterialActiveClassSuffix).trim().replaceAll(" ", ".")}:not(.custom-button)`
         const elem = doc.querySelector(activeButtonSelector);
         if (elem) {
             if (DashboardActiveInd()) {
@@ -131,7 +131,7 @@ export default function SidebarRoot(props: SidebarProps): React.JSX.Element {
             }
         }
 
-        const activeTextSelector = `${DashboardSearchPrefixKey} .MuiCollapse-root .${GetComponentClassName(AccordionItem.MaterialClass, DashboardSearchPrefixKey, AccordionItem.MaterialActiveClassSuffix).trim().replaceAll(" ", ".")}:not(custom-button) .${Paragraph.MaterialClass.replaceAll(" ", ".")}`
+        const activeTextSelector = `${DashboardSearchPrefixKey} .MuiCollapse-root .${GetComponentClassName(AccordionItem.MaterialClass, DashboardSearchPrefixKey, AccordionItem.MaterialActiveClassSuffix).trim().replaceAll(" ", ".")}:not(.custom-button) .${Paragraph.MaterialClass.replaceAll(" ", ".")}`
         const elemText = doc.querySelector(activeTextSelector);
         if (elemText) {
             if (DashboardActiveInd()) {
@@ -146,8 +146,6 @@ export default function SidebarRoot(props: SidebarProps): React.JSX.Element {
     function DashboardActiveInd() {
         return state > StateList.bitburner
     }
-
-    DetachBoxRoot();
 
     const styles = ns.ui.getStyles()
     const theme = ns.ui.getTheme()
