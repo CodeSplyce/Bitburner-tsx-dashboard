@@ -4,7 +4,7 @@ import {AttachSidebarRoot, Cleanup} from "/ui/SidebarRoot";
 export async function main(ns: NS): Promise<void> {
     ns.disableLog("asleep");
     // for testing to quick kill
-    ns.tail();
+    //ns.tail();
 
     let loopInd = true;
     // Cleans up react element after exit

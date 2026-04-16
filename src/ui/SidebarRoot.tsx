@@ -151,10 +151,11 @@ export default function SidebarRoot(props: SidebarProps): React.JSX.Element {
     const theme = ns.ui.getTheme()
 
     const styleList: string[] = []
-    Object.keys(theme).forEach(key => {
+    Object.entries(theme).forEach(([key, value]) => {
         const name = key.charAt(0).toUpperCase() + key.slice(1).toLowerCase()
-        styleList.push(`.color${name} { color: ${theme[key]} }`);
-        styleList.push(`.backgroundColor${name} { background-color: ${theme[key]} }`);
+        styleList.push(`.color${name} { color: ${value} }`);
+        styleList.push(`.backgroundColor${name} { background-color: ${value} }`);
+        styleList.push(`.borderColor${name} { border-color: ${value} }`);
     });
     styleList.push(`.fontFamily { font-family: ${styles.fontFamily}}`);
     styleList.push(`.fontSize { font-size: ${styles.fontSize}}`);

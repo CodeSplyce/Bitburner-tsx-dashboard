@@ -1,11 +1,13 @@
 const https = require("https")
 const fs = require("fs")
 
-const url = 'https://raw.githubusercontent.com/bitburner-official/bitburner-src/refs/heads/dev/src/ScriptEditor/NetscriptDefinitions.d.ts'
+const url = 'https://raw.githubusercontent.com/bitburner-official/bitburner-src/refs/heads/stable/src/ScriptEditor/NetscriptDefinitions.d.ts'
 const path = './NetscriptDefinitions.d.ts'
 
 https.get(url, (res) => {
     const file = fs.createWriteStream(path)
+
+    file.write(`// @ts-nocheck\n// Update at ${new Date().toLocaleString()}\n`);
 
     res.pipe(file)
 
